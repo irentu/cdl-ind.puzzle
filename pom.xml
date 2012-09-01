@@ -40,6 +40,10 @@
     -->
     <org.osgi.service.http.port>8080</org.osgi.service.http.port>
     <org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
+
+  	<bundle-one.version>1.0-SNAPSHOT</bundle-one.version>
+  	<bundle-two.version>1.0-SNAPSHOT</bundle-two.version>
+  	<bundle-three.version>1.0-SNAPSHOT</bundle-three.version>
   </properties>
 
   <packaging>pom</packaging>
@@ -81,6 +85,53 @@
           -->
         </executions>
       </plugin>
+      
+   		<plugin>
+		  <groupId>org.codehaus.mojo</groupId>
+		  <artifactId>build-helper-maven-plugin</artifactId>
+		  <inherited>false</inherited>
+		  <executions>
+		    <execution>
+		      <id>attach-artifacts</id>
+		      <phase>package</phase>
+		      <goals>
+		        <goal>attach-artifact</goal>
+		      </goals>
+		      <configuration>
+		        <artifacts>
+		          <artifact>
+		            <file>target/features.xml</file>
+		            <type>xml</type>
+		            <classifier>features</classifier>
+		          </artifact>
+		        </artifacts>
+		      </configuration>
+		    </execution>
+		  </executions>
+		</plugin>           
+		<plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-resources-plugin</artifactId>
+		  <inherited>false</inherited>
+		  <executions>
+		    <execution>
+		      <id>copy-features</id>
+		      <phase>generate-resources</phase>
+		      <goals>
+		        <goal>copy-resources</goal>
+		      </goals>
+		      <configuration>
+		        <outputDirectory>target</outputDirectory>
+		        <resources>
+		          <resource>
+		            <directory>resources</directory>
+		            <filtering>true</filtering>
+		          </resource>
+		        </resources>
+		      </configuration>
+		    </execution>
+		  </executions>
+		</plugin>
     </plugins>
     
   	<pluginManagement>

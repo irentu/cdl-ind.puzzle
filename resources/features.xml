@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+    <feature name="puzzle" version="${project.version}">
+        <bundle>mvn:at.ac.tuwien.ifs.cdl_ind.puzzle/at.ac.tuwien.ifs.cdl_ind.puzzle.api/${bundle-one.version}</bundle>
+        <bundle>mvn:at.ac.tuwien.ifs.cdl_ind.puzzle/at.ac.tuwien.ifs.cdl_ind.puzzle.consumer/${bundle-two.version}</bundle>
+        <bundle>mvn:at.ac.tuwien.ifs.cdl_ind.puzzle/at.ac.tuwien.ifs.cdl_ind.puzzle.producer/${bundle-three.version}</bundle>
+    </feature>
+</features>
